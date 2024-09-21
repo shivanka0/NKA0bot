@@ -5,18 +5,19 @@ const port = process.env.PORT || 4000;
 const { twitterClient } = require("./twitterClient.js")
 const CronJob = require("cron").CronJob;
 
-const tweet = async () => {
+const tweet = async (tweet) => {
 	try {
-		await twitterClient.v2.tweet("tweet this in 30 seconds, again shivanka0");
+		await twitterClient.v2.tweet(tweet);
 	} catch (e) {
 		console.log(e)
 	}
 }
+tweet("tweet this in 30 seconds, again shivanka0");
 
-tweet();
+// tweet();
 
-const cronTweet = new CronJob("30 * * * * *", async () => {
-	tweet();
-});
+// const cronTweet = new CronJob("30 * * * * *", async () => {
+// 	tweet();
+// });
 
-cronTweet.start();
+// cronTweet.start();
