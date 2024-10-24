@@ -28,33 +28,17 @@
             <div class="tweet-container">
                 <h2>Post a Tweet for @NKA0bot</h2>
                 <textarea id="tweet-input" placeholder="Enter your tweet here"></textarea>
-                <button onclick="postTweet()">Tweet</button>
+                <button id = "tweet-button">Tweet</button>
             </div>
-            
+
         </div>
         <!-- JavaScript to handle form submission -->
+        <script src="index.js"></script>
         <script>
-            async function postTweet() {
-            const tweetText = document.getElementById('tweet-input').value;
-        
-            try {
-                const response = await fetch('/api/tweet', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: tweetText,
-                });
-        
-                const result = await response.json();
-                if (result.success) {
-                alert('Tweet posted successfully!');
-                } else {
-                alert('Error posting tweet: ' + result.error);
-                }
-            } catch (error) {
-                alert('An error occurred: ' + error.message);
-            }
+            document.getElementById("tweet-button").onclick = () => {
+                tweetText = document.getElementById("tweet-input").value; // Changed from textContent to value
+                tweet(tweetText);
+                //<!-- from index.js -->
             }
         </script>
     </body>
